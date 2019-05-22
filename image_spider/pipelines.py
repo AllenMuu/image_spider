@@ -5,15 +5,15 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import re
-
 from scrapy import Request
 from scrapy.pipelines.images import ImagesPipeline
 
 
 class ImageSpiderPipeline(ImagesPipeline):
+
     def get_media_requests(self, item, info):
-        for img_url in item['imagUrl']:
-            yield Request(img_url)
+        for img_url in item['imgUrl']:
+            yield Request(img_url, meta={'name': item['imgName']})
 
     def file_path(self, request, response=None, info=None):
         # 重命名，若不重写这函数，图片名为哈希，就是一串乱七八糟的名字

@@ -11,6 +11,6 @@ import scrapy
 class ImageSpiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    imagUrl = scrapy.Field()
+    imgUrl = scrapy.Field()
     imgName = scrapy.Field()
     pass
